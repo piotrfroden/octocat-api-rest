@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class OctocatModel {
+public class OctocatDTO {
     String login;
     String id;
     String node_id;
@@ -25,7 +25,7 @@ public class OctocatModel {
     String events_url;
     String received_events_url;
     String type;
-    String site_admin;
+    Boolean site_admin;
     String name;
     String company;
     String blog;
@@ -34,10 +34,10 @@ public class OctocatModel {
     String hireable;
     String bio;
     String twitter_username;
-    String public_repos;
-    String public_gists;
-    String followers;
-    String following;
+    Integer public_repos;
+    Integer public_gists;
+    Integer followers;
+    Integer following;
     String created_at;
     String updated_at;
 }
