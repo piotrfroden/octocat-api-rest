@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "22da3f0f-208f-4f38-9484-b700660dd407",
+		"name": "testOctocat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "octocat",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "14a6cd41-e9bb-4623-bd43-92aa4a2f17f9",
+						"exec": [
+							"pm.test(\"Check response status code is 200\", function () {\r",
+							"  console.log(\"Requested url \" + pm.request.url);\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"  pm.expect(pm.response.status).to.eql('OK');\r",
+							"  console.log(\"Response code is \" + pm.response.code + \" and status is \" + pm.response.status);\r",
+							"});\r",
+							"\r",
+							"var body;\r",
+							"\r",
+							"pm.test(\"Check response data in json have JSON body\", function() {\r",
+							"  body = pm.response.json();\r",
+							"  pm.expect(body).not.equals(null);\r",
+							"  pm.expect(body).to.have.jsonBody;\r",
+							"  pm.expect(body).to.be.ok;\r",
+							"  console.log(\"Response have json body\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check values response json parameters\", function() {\r",
+							"  console.log(\"Check response json body parameters values\");\r",
+							"  pm.expect(body.login).to.eql('octocat');\r",
+							"  pm.expect(body.id).to.eql(583231);\r",
+							"  pm.expect(body.node_id).to.eql('MDQ6VXNlcjU4MzIzMQ==');\r",
+							"  pm.expect(body.avatar_url).to.eql('https://avatars.githubusercontent.com/u/583231?v=4');\r",
+							"  pm.expect(body.gravatar_id).to.eql('');\r",
+							"  pm.expect(body.url).to.eql('https://api.github.com/users/octocat');\r",
+							"  pm.expect(body.html_url).to.eql('https://github.com/octocat');\r",
+							"  pm.expect(body.followers_url).to.eql('https://api.github.com/users/octocat/followers');\r",
+							"  pm.expect(body.following_url).to.eql('https://api.github.com/users/octocat/following{/other_user}');\r",
+							"  pm.expect(body.gists_url).to.eql('https://api.github.com/users/octocat/gists{/gist_id}');\r",
+							"  pm.expect(body.starred_url).to.eql('https://api.github.com/users/octocat/starred{/owner}{/repo}');\r",
+							"  pm.expect(body.subscriptions_url).to.eql('https://api.github.com/users/octocat/subscriptions');\r",
+							"  pm.expect(body.organizations_url).to.eql('https://api.github.com/users/octocat/orgs');\r",
+							"  pm.expect(body.repos_url).to.eql('https://api.github.com/users/octocat/repos');\r",
+							"  pm.expect(body.events_url).to.eql('https://api.github.com/users/octocat/events{/privacy}');\r",
+							"  pm.expect(body.received_events_url).to.eql('https://api.github.com/users/octocat/received_events');\r",
+							"  pm.expect(body.type).to.eql('User');\r",
+							"  pm.expect(body.site_admin).to.eql(false);\r",
+							"  pm.expect(body.name).to.eql('The Octocat');\r",
+							"  pm.expect(body.company).to.eql('@github');\r",
+							"  pm.expect(body.blog).to.eql('https://github.blog');\r",
+							"  pm.expect(body.location).to.eql('San Francisco');\r",
+							"  pm.expect(body.email).to.eql(null);\r",
+							"  pm.expect(body.hireable).to.eql(null);\r",
+							"  pm.expect(body.bio).to.eql(null);\r",
+							"  pm.expect(body.twitter_username).to.eql(null);\r",
+							"  pm.expect(body.public_repos).to.eql(8);\r",
+							"  pm.expect(body.public_gists).to.eql(8);\r",
+							"  pm.expect(body.followers).to.eql(3878);\r",
+							"  pm.expect(body.following).to.eql(9);\r",
+							"  pm.expect(body.created_at).to.eql('2011-01-25T18:44:36Z');\r",
+							"  pm.expect(body.updated_at).to.eql('2021-07-22T14:27:29Z');\r",
+							"  pm.environment.set(\"name\", body[\"name\"]);\r",
+							"  console.log(\"Response parameter 'name' value assigned to environment variable 'name'\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response property name matches environment variable name\", function () {\r",
+							"  console.log(\"Response json body parameter name: \" + pm.response.json().name);\r",
+							"  console.log(\"Environment variable name: \" + pm.environment.get(\"name\"));\r",
+							"  pm.expect(pm.response.json().name).to.eql(pm.environment.get(\"name\"));\r",
+							"  console.log(\"Environment variable 'name' value is equal to response json body parameter 'name'\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.github.com/users/octocat",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"users",
+						"octocat"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
